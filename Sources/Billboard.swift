@@ -31,7 +31,7 @@ public class Billboard {
   
   public func listHot100() {
     for row in hot100 {
-      print("\(row.currentRank) --- \(row.songTitle) | \(row.artistName))")
+      print("\(row.currentRank) --- \(row.songTitle) | \(row.artistName)")
     }
   }
 }
