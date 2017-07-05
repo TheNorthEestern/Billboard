@@ -3,7 +3,7 @@ import Kanna
 
 public class Billboard {
   private var hot100Rows : XPathObject?
-  private var hot100 : [BillboardEntry]?
+  private var hot100 = [BillboardEntry]()
   public var htmlContents: String?
   public var returnedDocument: HTMLDocument?
   public init(uniformResourceLocator: String) {
@@ -23,17 +23,15 @@ public class Billboard {
           let currentRank = row.at_css(".chart-row__current-week")!.content!
           let previousRank = row.at_css(".chart-row__last-week")!.content!
           
-          hot100?.append(BillboardEntry(songTitle: songTitle, artistName: artistName.trimmingCharacters(in: .whitespacesAndNewlines), currentRank: currentRank, previousRank: previousRank.characters.last!))
+          hot100.append(BillboardEntry(songTitle: songTitle, artistName: artistName.trimmingCharacters(in: .whitespacesAndNewlines), currentRank: currentRank, previousRank: previousRank.characters.last!))
         }
       }
     }
   }
   
   public func listHot100() {
-      if let rows = hot100 {
-        for row in rows {
-          print("\(row.currentRank) --- \(row.songTitle) | \(row.artistName))")
-        }
+    for row in hot100 {
+      print("\(row.currentRank) --- \(row.songTitle) | \(row.artistName))")
     }
   }
 }
