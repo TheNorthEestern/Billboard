@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AFD60FB41F0C9324009D0099 /* BillboardEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD60FB31F0C9324009D0099 /* BillboardEntry.swift */; };
 		OBJ_30 /* CSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* CSS.swift */; };
 		OBJ_31 /* Kanna.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* Kanna.swift */; };
 		OBJ_32 /* libxmlHTMLDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* libxmlHTMLDocument.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AFD60FB31F0C9324009D0099 /* BillboardEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillboardEntry.swift; sourceTree = "<group>"; };
 		OBJ_11 /* BillboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillboardTests.swift; sourceTree = "<group>"; };
 		OBJ_15 /* CSS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSS.swift; sourceTree = "<group>"; };
 		OBJ_16 /* Kanna.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kanna.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_8 /* Billboard.swift */,
+				AFD60FB31F0C9324009D0099 /* BillboardEntry.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				AFD60FB41F0C9324009D0099 /* BillboardEntry.swift in Sources */,
 				OBJ_41 /* Billboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
