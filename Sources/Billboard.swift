@@ -3,7 +3,7 @@ import Kanna
 
 public class Billboard {
   private var hot100Rows : XPathObject?
-  private var hot100 = [BillboardEntry]()
+  public var hot100 = [BillboardEntry]()
   public var htmlContents: String?
   public var returnedDocument: HTMLDocument?
   public init(uniformResourceLocator: String) {
@@ -27,6 +27,10 @@ public class Billboard {
         }
       }
     }
+  }
+  
+  public func getHot100() -> [BillboardEntry] {
+    return hot100
   }
   
   public func listHot100() {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BillboardEntry {
+public struct BillboardEntry {
   public let songTitle : String
   public let artistName : String
   public let currentRank : String
