@@ -1,1 +1,1 @@
-web: Run --env=production --workdir=./ --config:servers.default.port=$PORT
+web: Billboard --env=production --workdir=./ --config:servers.default.port=$PORT
