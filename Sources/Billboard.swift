@@ -24,7 +24,7 @@ public class Billboard {
         let entryDate = dateFormatter.date(from: dateString)
         var validSaturdays = [Date]()
         do {
-            validSaturdays = try getAllSaturdaysIn(theYear: "2016")
+            validSaturdays = try getAllSaturdaysIn(theYear: dateString.components(separatedBy: "-")[0])
         } catch let error {
             print(error)
         }
