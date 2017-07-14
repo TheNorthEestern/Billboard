@@ -20,15 +20,13 @@ public class Billboard {
      */
     public func getEntriesFor(calendarWeek dateString: String) -> [BillboardEntry]? {
         var foundEntries = [BillboardEntry]()
-        let dateFormatter = queryParamDateFormatter()
-        let entryDate = dateFormatter.date(from: dateString)
-        var validSaturdays = [Date]()
+        var validSaturdays = [String]()
         do {
             validSaturdays = try getAllSaturdaysIn(theYear: dateString.components(separatedBy: "-")[0])
         } catch let error {
             print(error)
         }
-        if isValidSaturday(date: entryDate!, datesInYear: validSaturdays) {
+        if isValidSaturday(dateString: dateString, datesInYear: validSaturdays) {
                 getPageAt(url: "\(_baseUrlString)/\(dateString)") { (document) in
                     let calendarWeek = document.css("time")[0].content!
                     if let rows = document.css(".chart-row") as XPathObject? {
@@ -72,8 +70,8 @@ public class Billboard {
         }
     }
     
-    private func isValidSaturday(date: Date, datesInYear: [Date]) -> Bool {
-        return datesInYear.contains(date)
+    private func isValidSaturday(dateString: String, datesInYear: [String]) -> Bool {
+        return datesInYear.contains(dateString)
     }
     
     private func queryParamDateFormatter() -> DateFormatter {
@@ -82,12 +80,12 @@ public class Billboard {
         return formatter
     }
     
-    private func getAllSaturdaysIn(theYear year: String) throws -> [Date] {
+    private func getAllSaturdaysIn(theYear year: String) throws -> [String] {
         if year.characters.count < 4 || year.characters.count > 4 {
             throw BillboardError.wrongDateFormat
         }
         
-        var saturdays : [Date] = [Date]()
+        var saturdayStrings: [String] = [String]()
         let formatter : DateFormatter = queryParamDateFormatter()
         
         let beginningOfTheYear : Date? = formatter.date(from: "\(year)/01/01")
@@ -103,12 +101,12 @@ public class Billboard {
                 if date < stopDate {
                     stop = true // We've reached the end, exit the loop
                 } else {
-                    saturdays.append(date)
+                    saturdayStrings.append(formatter.string(from: date))
                 }
             }
         }
         
-        return saturdays
+        return saturdayStrings
     }
     
     private func getPageAt(url: String, document: (_ doc: HTMLDocument) -> ()) {
