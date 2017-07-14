@@ -2,6 +2,7 @@ import Foundation
 import Kanna
 
 public class Billboard {
+    public init() {}
     private var hot100Rows : XPathObject?
     public var hot100 = [BillboardEntry]()
     public var htmlContents: String?
