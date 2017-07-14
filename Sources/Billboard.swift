@@ -6,16 +6,28 @@ public class Billboard {
     public var hot100 = [BillboardEntry]()
     public var htmlContents: String?
     public var returnedDocument: HTMLDocument?
-    public init(uniformResourceLocator: String) {
-        /* let url = URL(string: uniformResourceLocator)
-         if let doc = HTML(url: url!, encoding: .utf8) {
-         // returnedDocument = doc
-         // htmlContents = doc.title
-         } */
+    private let _baseUrlString: String = "http://www.billboard.com/charts/hot-100"
+    
+    /**
+        Crawls Billboard Hot 100 by date. Date must be a Saturday in given year.
+     
+        - parameter dateString: The date you'd like to retrieve entries for. e.g. 2017-05-13
+     
+        - returns [BillboardEntry]?
+     
+     */
+    public func getEntriesForCalendarWeek(_ dateString: String) -> [BillboardEntry]? {
+        let foundEntries = [BillboardEntry]()
+        
+        return foundEntries
+    }
+    
+    private func _getPage(urlString: String, document: (_ doc: HTMLDocument) -> ()) {
+        document(HTML(url: URL(string: urlString)!, encoding: .utf8)!)
     }
     
     public func fetchHot100() {
-        if let doc = HTML(url: URL(string: "http://www.billboard.com/charts/hot-100")!, encoding: .utf8) {
+        _getPage(urlString: _baseUrlString) { (doc) in
             let calendarWeek = doc.css("time")[0].content!
             if let rows = doc.css(".chart-row") as XPathObject? {
                 for row in rows {
